@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://0j7cg004rnsx"]
+
+[ext_resource type="Script" uid="uid://bgf6pragq0opb" path="res://assets/scripts/player.gd" id="1_egv2f"]
+[ext_resource type="Texture2D" uid="uid://csowsl7yud1ef" path="res://assets/sprites/LILDYLan.png" id="2_egv2f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ef3n"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egv2f"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ef3n"]
+atlas = ExtResource("2_egv2f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r07lq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ef3n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-1, 0)
+scale = Vector2(1.75, 1.75)
+script = ExtResource("1_egv2f")
+
+[node name="CrouchShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_1ef3n")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="NormalShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_egv2f")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.496002, -1)
+scale = Vector2(0.969, 1)
+sprite_frames = SubResource("SpriteFrames_r07lq")
+metadata/_edit_lock_ = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.42
+one_shot = true
+
+[node name="dash_again_timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbps0osec8awo"]
+
+[node name="dash" type="Node2D"]
+
+[node name="dashtimer" type="Timer" parent="."]
+one_shot = true
