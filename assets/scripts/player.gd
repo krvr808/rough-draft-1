@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-
+#--------VARIABLES-------------------------------------------------------------------------------------------------------------
 var normalspeed = 100.0
 var JUMP_VELOCITY = -100.0
 var wall_slide_speed = 50
 var wall_slide_gravity = 50
 
 var dashing = false
-const dashspeed = 350
+const dashspeed = 1000
 var can_dash = true
 
 @export var max_wall_jump_count: int = 1
@@ -15,13 +15,14 @@ var can_dash = true
 var wall_jump_count: int = 0;
 var is_wall_sliding : bool;
 
+#----------------------GRAVITY-----------------------------------------------------------------------------
 func _physics_process(delta):
 	
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	#----------------BASICMOVEMENT---------------------------------------------------------------------
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -34,7 +35,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 	
-	
+	#-------------DASHING----------------------------------------------------------------
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		if dashing:
@@ -44,7 +45,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, normalspeed)
 
-
+#-----------------------CROUCH------------------------------------------------------------------------------------
 	if Input.is_action_pressed("Crouch"):
 		$CrouchShape.disabled = false
 		$NormalShape.disabled = true
@@ -63,7 +64,7 @@ func _physics_process(delta):
 		
 		normalspeed = 200
 		JUMP_VELOCITY = -300
-	
+	#--------------------WALLSLIDE-------------------------------------------------------------------------------------------------------
 	if is_on_wall() and !is_on_floor():
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 			is_wall_sliding = true
@@ -75,7 +76,7 @@ func _physics_process(delta):
 		velocity.y += (wall_slide_gravity * delta)
 		velocity.y = min(velocity.y, wall_slide_speed)
 		
-		
+		#----------------WALLJUMP-----------------------------------------------------------------------------------------------
 	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor():
 			wall_jump_count = 0;
@@ -87,7 +88,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			wall_jump_count+=1
 			
-		
+			#-------------DASH------------------------------------------------------------------------------------------
 	if Input.is_action_just_pressed("Dash") and can_dash:
 		dashing = true
 		can_dash = false 
@@ -95,18 +96,39 @@ func _physics_process(delta):
 		$dash_again_timer.start()
 		
 		
-		
 	if dashing: 
 		velocity.x = direction * dashspeed
 	else: 
 		velocity.x = direction * normalspeed
-		
+		#-----------------------------------------------------------------------------
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#-----------------------------------------------------------------------------------
 	move_and_slide()
 	
-
+#----------TIMERS--------------------------------------------------------------------
 # to stop dashing
 func _on_timer_timeout() -> void:
 	dashing = false

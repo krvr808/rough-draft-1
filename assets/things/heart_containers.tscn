@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dxmykki6xnop4"]
+
+[node name="HeartContainers" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="."]
+layout_mode = 2

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://7l0qeym585yl"]
+
+[ext_resource type="Script" uid="uid://dhrbljcxmjfew" path="res://assets/scripts/heartcontainers.gd" id="1_ik607"]
+[ext_resource type="Texture2D" uid="uid://di7lt4uax4ndu" path="res://assets/sprites/Herat-export.png" id="2_bidpk"]
+
+[node name="heartcontainers" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ik607")
+
+[node name="1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_bidpk")
+flip_v = true
+
+[node name="2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_bidpk")
+flip_v = true
+
+[node name="3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_bidpk")
+flip_v = true
