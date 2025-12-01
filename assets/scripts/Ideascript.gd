@@ -11,6 +11,7 @@
 #add kid pickups and counter
 #end credits
 
+
 #crouch = https://www.youtube.com/watch?v=Ou392X478vY
 #wall jump = https://www.youtube.com/watch?v=S_b0c4i36FY
 #attack animation smooth = https://www.youtube.com/watch?v=KS837a-TFRc&pp=0gcJCfwJAYcqIYzv
@@ -21,3 +22,10 @@
 #https://www.youtube.com/watch?v=BZXY0TuI0F0 enemies
 #https://www.youtube.com/watch?v=EDOLMZg-loQ grappling hook
 #https://www.youtube.com/watch?v=JVR-w-o2TII projectile
+#https://www.youtube.com/watch?v=xGLGcUZ1jW0 death from zone
+#https://www.youtube.com/watch?v=SNWpFTer-YU player knockback
+
+
+
+
+#Vecteezy.com, Matt Cole

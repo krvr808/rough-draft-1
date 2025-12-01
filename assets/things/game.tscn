@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=4 uid="uid://cw84n6y71sc8u"]
+[gd_scene load_steps=22 format=4 uid="uid://cw84n6y71sc8u"]
 
 [ext_resource type="Texture2D" uid="uid://dno5werjaqjx8" path="res://assets/sprites/spriteblockground.png" id="1_4rbwq"]
 [ext_resource type="Script" uid="uid://m7rtho3a4fnv" path="res://assets/things/game.gd" id="1_bckn3"]
 [ext_resource type="PackedScene" uid="uid://cbdh1vwhgll4" path="res://assets/things/turret_enemy.tscn" id="2_goi7y"]
 [ext_resource type="Texture2D" uid="uid://dg0blusf80usl" path="res://assets/sprites/wallleft.png" id="2_m23e4"]
 [ext_resource type="Texture2D" uid="uid://d22n2bgauvaxx" path="res://assets/sprites/wallright.png" id="3_ix7d4"]
-[ext_resource type="Texture2D" uid="uid://cjd0a31lrcmjt" path="res://assets/sprites/istockphoto-1126952398-170667a.jpg" id="3_po8j3"]
+[ext_resource type="Texture2D" uid="uid://b8fhcui2kqee8" path="res://assets/scripts/jlwd_2ucy_201006.jpg" id="3_po8j3"]
 [ext_resource type="PackedScene" uid="uid://0j7cg004rnsx" path="res://assets/things/player.tscn" id="4_lsnf2"]
 [ext_resource type="Texture2D" uid="uid://bwklt2452fu2k" path="res://assets/sprites/crouchroof.png" id="4_m23e4"]
 [ext_resource type="Texture2D" uid="uid://dlje07gu68rga" path="res://assets/sprites/hellplatform.png" id="6_ix7d4"]
 [ext_resource type="PackedScene" uid="uid://7l0qeym585yl" path="res://assets/things/heartcontainers.tscn" id="7_lsnf2"]
 [ext_resource type="PackedScene" uid="uid://crbl7wc3mllu2" path="res://assets/things/wall.tscn" id="10_po8j3"]
+[ext_resource type="Script" uid="uid://bwnd2h6h76k3f" path="res://assets/scripts/LavaDeath.gd" id="12_8oj6v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bckn3"]
 
@@ -55,6 +56,13 @@ sources/2 = SubResource("TileSetAtlasSource_po8j3")
 sources/3 = SubResource("TileSetAtlasSource_ix7d4")
 sources/4 = SubResource("TileSetAtlasSource_lsnf2")
 
+[sub_resource type="Gradient" id="Gradient_1p5j7"]
+colors = PackedColorArray(1, 0, 0, 0, 1, 0.283333, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nunmn"]
+gradient = SubResource("Gradient_1p5j7")
+fill_to = Vector2(0, 0.133028)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bckn3")
 
@@ -66,8 +74,8 @@ heart_containers = NodePath("HUD/heartcontainers")
 
 [node name="HellBackground" type="Sprite2D" parent="Player"]
 z_index = -10
-position = Vector2(-0.499991, 0.500005)
-scale = Vector2(0.453831, 0.380531)
+position = Vector2(6.67572e-06, 0)
+scale = Vector2(0.0377606, 0.0356262)
 texture = ExtResource("3_po8j3")
 
 [node name="HUD" type="CanvasGroup" parent="Player"]
@@ -89,3 +97,9 @@ tile_set = SubResource("TileSet_8oj6v")
 
 [node name="Wall" parent="." instance=ExtResource("10_po8j3")]
 position = Vector2(-448, -30)
+
+[node name="Lava" type="Sprite2D" parent="."]
+position = Vector2(-129, 176)
+scale = Vector2(21.875, 4.375)
+texture = SubResource("GradientTexture2D_nunmn")
+script = ExtResource("12_8oj6v")
