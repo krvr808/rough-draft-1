@@ -1,4 +1,4 @@
-extends HBoxContainer
+class_name HeartContainers extends HBoxContainer
 
 enum modes {full, empty}
 

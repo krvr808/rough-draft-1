@@ -1,10 +1,12 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 #--------VARIABLES-------------------------------------------------------------------------------------------------------------
 var normalspeed = 100.0
 var JUMP_VELOCITY = -100.0
 var wall_slide_speed = 50
 var wall_slide_gravity = 50
+
+var hit = true
 
 var dashing = false
 const dashspeed = 1000
@@ -15,9 +17,13 @@ var can_dash = true
 var wall_jump_count: int = 0;
 var is_wall_sliding : bool;
 
+var health: int = 3;
+
+@export var heart_containers: HeartContainers;
+
 #----------------------GRAVITY-----------------------------------------------------------------------------
 func _physics_process(delta):
-	
+	heart_containers.update_health(health);
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -100,7 +106,159 @@ func _physics_process(delta):
 		velocity.x = direction * dashspeed
 	else: 
 		velocity.x = direction * normalspeed
-		#-----------------------------------------------------------------------------
+		#---------------hit by turret take damage----------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -131,7 +289,10 @@ func _physics_process(delta):
 #----------TIMERS--------------------------------------------------------------------
 # to stop dashing
 func _on_timer_timeout() -> void:
-	dashing = false
+	dashing = false;
+
+func take_damange() -> void:
+	health-=1;
 
 
 func _on_dash_again_timer_timeout() -> void:

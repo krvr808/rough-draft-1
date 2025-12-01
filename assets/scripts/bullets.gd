@@ -1,10 +1,16 @@
-extends Area2D
+class_name Bullet extends Area2D
 
-var projectiledirection : Vector2 = Vector2.RIGHT
-var projectilespeed : float = 300
+var projectilespeed : float = 0.5
 
 func _physics_process(delta):
-	position += projectiledirection * projectilespeed *delta
+	position += self.position.rotated(self.rotation + PI) * projectilespeed * delta
 
 func _on_screen_exited() -> void:
-	pass # Replace with function body.
+	queue_free()
+
+
+func _on_body_entered(body: Node2D):
+	if body.is_in_group("Player"):
+		(body as Player).take_damange();
+	queue_free()
+	

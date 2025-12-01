@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckj1mobxo352p"]
+
+[ext_resource type="Script" uid="uid://bvvcrxtbsfael" path="res://assets/scripts/bullets.gd" id="1_72660"]
+[ext_resource type="Texture2D" uid="uid://crtw80ue8yirc" path="res://assets/sprites/projectile.png" id="2_8p7k0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72660"]
+radius = 4.0
+height = 16.0
+
+[node name="Bullets" type="Area2D"]
+script = ExtResource("1_72660")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(3, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_72660")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, -2.5)
+scale = Vector2(1.625, 1.625)
+texture = ExtResource("2_8p7k0")
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.25, -2)
+scale = Vector2(0.675, 0.45)
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

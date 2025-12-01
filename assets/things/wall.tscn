@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crbl7wc3mllu2"]
+
+[ext_resource type="Texture2D" uid="uid://6pm8xa2asd03" path="res://assets/sprites/practicewall.png" id="1_c3ayy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqbv5"]
+size = Vector2(32, 6)
+
+[node name="Wall" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c3ayy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bqbv5")
