@@ -18,12 +18,15 @@ var wall_jump_count: int = 0;
 var is_wall_sliding : bool;
 
 var health: int = 3;
+var child_count: int = 3;
 
 @export var heart_containers: HeartContainers;
+@export var child_containers: ChildsMark;
 
 #----------------------GRAVITY-----------------------------------------------------------------------------
 func _physics_process(delta):
 	heart_containers.update_health(health);
+	child_containers.update_yeschild(child_count);
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta

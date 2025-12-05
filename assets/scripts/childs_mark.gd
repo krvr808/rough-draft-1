@@ -1,13 +1,14 @@
 class_name ChildsMark extends HBoxContainer
 
-enum modes {yeschild, nochild}
+enum modes {nochild, yeschild}
 
 var CHILDGONE = preload("res://assets/sprites/Childgone.png")
-const CHILD = preload("res://assets/sprites/Child.png")
+var CHILD = preload("res://assets/sprites/Child.png")
 
 @export var mode : modes
 
-var kidcount = 0
+func _ready() -> void:
+	update_nochild(0);
 
 func update_yeschild(value):
 	match mode:
