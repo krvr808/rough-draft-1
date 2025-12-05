@@ -7,6 +7,8 @@ var heart_full = preload("res://assets/sprites/Herat-export.png")
 
 @export var mode : modes
 
+
+
 func update_health(value):
 	match mode:
 		modes.full:

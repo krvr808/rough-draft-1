@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg6aqkajflu3p"]
+
+[ext_resource type="Script" uid="uid://cnou7y2r2f0ym" path="res://assets/scripts/childs_mark.gd" id="1_d614n"]
+[ext_resource type="Texture2D" uid="uid://cj86d4mfmhvwx" path="res://assets/sprites/Child.png" id="1_yqnhj"]
+
+[node name="ChildsMark" type="HBoxContainer"]
+offset_top = 1.0
+offset_right = 56.0
+offset_bottom = 17.0
+script = ExtResource("1_d614n")
+
+[node name="Child 1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_yqnhj")
+
+[node name="Child 2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_yqnhj")
+
+[node name="Child 3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_yqnhj")

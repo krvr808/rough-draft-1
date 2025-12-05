@@ -291,7 +291,7 @@ func _physics_process(delta):
 func _on_timer_timeout() -> void:
 	dashing = false;
 
-func take_damange() -> void:
+func take_damage() -> void:
 	health-=1;
 
 

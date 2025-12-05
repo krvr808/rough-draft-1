@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cw84n6y71sc8u"]
+[gd_scene load_steps=26 format=4 uid="uid://cw84n6y71sc8u"]
 
 [ext_resource type="Texture2D" uid="uid://dno5werjaqjx8" path="res://assets/sprites/spriteblockground.png" id="1_4rbwq"]
 [ext_resource type="Script" uid="uid://m7rtho3a4fnv" path="res://assets/things/game.gd" id="1_bckn3"]
@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b8fhcui2kqee8" path="res://assets/scripts/jlwd_2ucy_201006.jpg" id="3_po8j3"]
 [ext_resource type="PackedScene" uid="uid://0j7cg004rnsx" path="res://assets/things/player.tscn" id="4_lsnf2"]
 [ext_resource type="Texture2D" uid="uid://bwklt2452fu2k" path="res://assets/sprites/crouchroof.png" id="4_m23e4"]
+[ext_resource type="PackedScene" uid="uid://dqfx3njakxonn" path="res://assets/things/Child.tscn" id="4_nunmn"]
+[ext_resource type="PackedScene" uid="uid://bg6aqkajflu3p" path="res://assets/things/childs_mark.tscn" id="5_nunmn"]
 [ext_resource type="Texture2D" uid="uid://dlje07gu68rga" path="res://assets/sprites/hellplatform.png" id="6_ix7d4"]
 [ext_resource type="PackedScene" uid="uid://7l0qeym585yl" path="res://assets/things/heartcontainers.tscn" id="7_lsnf2"]
 [ext_resource type="PackedScene" uid="uid://crbl7wc3mllu2" path="res://assets/things/wall.tscn" id="10_po8j3"]
 [ext_resource type="Script" uid="uid://bwnd2h6h76k3f" path="res://assets/scripts/LavaDeath.gd" id="12_8oj6v"]
+[ext_resource type="Script" uid="uid://namxi0lco5uc" path="res://assets/scripts/Deathzone.gd" id="13_1p5j7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bckn3"]
 
@@ -63,6 +66,9 @@ colors = PackedColorArray(1, 0, 0, 0, 1, 0.283333, 0, 1)
 gradient = SubResource("Gradient_1p5j7")
 fill_to = Vector2(0, 0.133028)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nunmn"]
+distance = 21.0286
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bckn3")
 
@@ -79,6 +85,7 @@ scale = Vector2(0.0377606, 0.0356262)
 texture = ExtResource("3_po8j3")
 
 [node name="HUD" type="CanvasGroup" parent="Player"]
+z_index = 500
 position = Vector2(1, 0)
 
 [node name="heartcontainers" parent="Player/HUD" instance=ExtResource("7_lsnf2")]
@@ -86,6 +93,13 @@ offset_left = -116.0
 offset_top = -64.0
 offset_right = -60.0
 offset_bottom = -46.0
+
+[node name="ChildsMark" parent="Player/HUD" instance=ExtResource("5_nunmn")]
+anchors_preset = 0
+offset_left = 58.0
+offset_top = -65.0
+offset_right = 114.0
+offset_bottom = -49.0
 
 [node name="TurretEnemy" parent="." instance=ExtResource("2_goi7y")]
 position = Vector2(-448, -47)
@@ -103,3 +117,18 @@ position = Vector2(-129, 176)
 scale = Vector2(21.875, 4.375)
 texture = SubResource("GradientTexture2D_nunmn")
 script = ExtResource("12_8oj6v")
+
+[node name="Deathzone" type="Area2D" parent="Lava"]
+script = ExtResource("13_1p5j7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lava/Deathzone"]
+shape = SubResource("WorldBoundaryShape2D_nunmn")
+
+[node name="Timetilldeath" type="Timer" parent="Lava/Deathzone"]
+wait_time = 3.0
+
+[node name="Child" parent="." instance=ExtResource("4_nunmn")]
+position = Vector2(-153, -27)
+
+[connection signal="body_entered" from="Lava/Deathzone" to="Lava/Deathzone" method="_on_body_entered"]
+[connection signal="timeout" from="Lava/Deathzone/Timetilldeath" to="Lava/Deathzone" method="_on_timetilldeath_timeout"]
