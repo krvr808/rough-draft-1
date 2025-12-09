@@ -72,11 +72,12 @@ distance = 21.0286
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bckn3")
 
-[node name="Player" parent="." node_paths=PackedStringArray("heart_containers") instance=ExtResource("4_lsnf2")]
+[node name="Player" parent="." node_paths=PackedStringArray("heart_containers", "child_containers") instance=ExtResource("4_lsnf2")]
 collision_layer = 3
 collision_mask = 3
 max_wall_jump_count = 0
 heart_containers = NodePath("HUD/heartcontainers")
+child_containers = NodePath("HUD/ChildsMark")
 
 [node name="HellBackground" type="Sprite2D" parent="Player"]
 z_index = -10
@@ -126,8 +127,13 @@ shape = SubResource("WorldBoundaryShape2D_nunmn")
 [node name="Timetilldeath" type="Timer" parent="Lava/Deathzone"]
 wait_time = 3.0
 
-[node name="Child" parent="." instance=ExtResource("4_nunmn")]
+[node name="Child2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_nunmn")]
+position = Vector2(106, -150)
+player = NodePath("../Player")
+
+[node name="Child" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_nunmn")]
 position = Vector2(-153, -27)
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="Lava/Deathzone" to="Lava/Deathzone" method="_on_body_entered"]
 [connection signal="timeout" from="Lava/Deathzone/Timetilldeath" to="Lava/Deathzone" method="_on_timetilldeath_timeout"]

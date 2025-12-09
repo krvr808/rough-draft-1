@@ -5,29 +5,11 @@ enum modes {nochild, yeschild}
 var CHILDGONE = preload("res://assets/sprites/Childgone.png")
 var CHILD = preload("res://assets/sprites/Child.png")
 var child_count: int = 0;
-@onready var kid_count = preload("res://assets/scripts/child.gd")
+@onready var childgd = preload("res://assets/scripts/child.gd")
 
-@export var mode : modes
-
-
-func _ready() -> void:
-	update_nochild(0);
-
-func update_modes(value):
-	match mode:
-		modes.yeschild:
-			update_yeschild(value)
-		modes.nochild:
-			update_nochild(value)
-			
-func update_yeschild(value):
+func update_children(value):
 	for i in get_child_count():
-		get_child(i).visible = value > i
-
-
-func update_nochild(value):
-	for i in get_child_count():
-		if value > i:
-			get_child(i).texture = CHILD
-		else:
-			get_child(i).texture = CHILDGONE
+		if(i >= value):
+			break;
+		var texture_rect: TextureRect = get_child(i)
+		texture_rect.texture = CHILD;
