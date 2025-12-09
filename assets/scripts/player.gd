@@ -18,7 +18,9 @@ var wall_jump_count: int = 0;
 var is_wall_sliding : bool;
 
 var health: int = 3;
-var child_count: int = 3;
+var child_count: int = 0;
+
+
 
 @export var heart_containers: HeartContainers;
 @export var child_containers: ChildsMark;
@@ -110,6 +112,12 @@ func _physics_process(delta):
 	else: 
 		velocity.x = direction * normalspeed
 		#---------------hit by turret take damage----------------------------------------------------
+	
+	
+	
+	
+	
+
 	
 	
 	
@@ -296,7 +304,10 @@ func _on_timer_timeout() -> void:
 
 func take_damage() -> void:
 	health-=1;
+	
 
+func gain_child() -> void:
+	child_count +=1
 
 func _on_dash_again_timer_timeout() -> void:
 	can_dash = true

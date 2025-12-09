@@ -16,7 +16,7 @@ func _on_body_entered(body: Node2D):
 	if body.is_in_group("Player"):
 		var player: Player = (body as Player);
 		player.take_damage();
-		player.health;	
+		player.health;
 		
 		if player.health == 0:
 			get_tree().reload_current_scene();
