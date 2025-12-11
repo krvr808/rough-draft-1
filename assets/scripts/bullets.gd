@@ -2,11 +2,11 @@ class_name Bullet extends Area2D
 
 
 
-var projectilespeed : float = 0.5
+var projectilespeed : float = 180
 
 
 func _physics_process(delta):
-	position += self.position.rotated(self.rotation + PI) * projectilespeed * delta
+	global_position += Vector2.LEFT.rotated(rotation + PI) * projectilespeed * delta
 
 func _on_screen_exited() -> void:
 	queue_free()

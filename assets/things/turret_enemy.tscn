@@ -15,6 +15,5 @@ texture = ExtResource("1_don7j")
 collision_mask = 3
 
 [node name="bulletspawn" type="Timer" parent="."]
-wait_time = 0.5
 
 [connection signal="timeout" from="bulletspawn" to="." method="_on_bulletspawn_timeout"]
