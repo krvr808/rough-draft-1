@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 #--------VARIABLES-------------------------------------------------------------------------------------------------------------
-var normalspeed = 100.0
+var normalspeed = 200.0
 var JUMP_VELOCITY = -100.0
 var wall_slide_speed = 50
 var wall_slide_gravity = 50
@@ -116,6 +116,173 @@ func _physics_process(delta):
 #-----------------------------------------------------------------------------------
 	move_and_slide()
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 #----------TIMERS--------------------------------------------------------------------
 # to stop dashing
 func _on_timer_timeout() -> void:
@@ -124,6 +291,8 @@ func _on_timer_timeout() -> void:
 func take_damage() -> void:
 	health-=1;
 	
+func heal_damage():
+	health +=1
 
 func gain_child() -> void:
 	child_count +=1

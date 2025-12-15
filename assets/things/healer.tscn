@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://flvaxaiodiij"]
+
+[ext_resource type="Texture2D" uid="uid://5ofntjylb8eg" path="res://assets/sprites/heartheal.png" id="1_mp3c5"]
+[ext_resource type="Script" uid="uid://bkvcd20j8op4a" path="res://assets/scripts/healer.gd" id="1_s5cub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5cub"]
+radius = 5.0
+
+[node name="Healer" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_s5cub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mp3c5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_s5cub")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
