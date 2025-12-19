@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 #--------VARIABLES-------------------------------------------------------------------------------------------------------------
-var normalspeed = 200.0
+var normalspeed = 300.0
 var JUMP_VELOCITY = -100.0
 var wall_slide_speed = 50
 var wall_slide_gravity = 50
@@ -9,7 +9,7 @@ var wall_slide_gravity = 50
 var hit = true
 
 var dashing = false
-const dashspeed = 1000
+const dashspeed = 800
 var can_dash = true
 
 @export var max_wall_jump_count: int = 1
@@ -37,12 +37,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("ui_right"): 
 		velocity.x = normalspeed 
-		$AnimatedSprite2D.flip_h = false
+		$NormalSprite.flip_h = false
 	elif Input.is_action_just_pressed("ui_left"):
 		velocity.x = -normalspeed
-		$AnimatedSprite2D.flip_h = true
+		$NormalSprite.flip_h = true
 	else:
 		velocity.x = 0
 	
@@ -60,7 +60,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Crouch"):
 		$CrouchShape.disabled = false
 		$NormalShape.disabled = true
-	
+		$NormalSprite.play("CrouchShape")
 		normalspeed = 120
 		JUMP_VELOCITY = -45
 	
@@ -68,10 +68,11 @@ func _physics_process(delta):
 	else:
 		$CrouchShape.disabled = true
 		$NormalShape.disabled = false
-		$AnimatedSprite2D.position.x = 0
-		$AnimatedSprite2D.position.y = 0
-		$AnimatedSprite2D.scale.x = 0.969
-		$AnimatedSprite2D.scale.y = 1
+		$NormalSprite.position.x = 0
+		$NormalSprite.position.y = 0
+		$NormalSprite.scale.x = 0.969
+		$NormalSprite.scale.y = 1
+		$NormalSprite.play("NormalShape")
 		
 		normalspeed = 200
 		JUMP_VELOCITY = -300

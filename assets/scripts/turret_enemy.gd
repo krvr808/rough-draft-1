@@ -4,7 +4,7 @@ extends Node2D
 @onready var bulletspawn: Timer = $bulletspawn
 @export var ammo : PackedScene 
 
-var player
+var player: Node2D
 
 func _ready():
 	player = get_parent().find_child("Player")
@@ -14,10 +14,11 @@ func _physics_process(_delta):
 	_check_player_collision()
 	
 func _aim():
-	ray_cast.target_position = to_local(player.position)
+	ray_cast.target_position = to_local(player.global_position)
 	
 func _check_player_collision():
 	if ray_cast.get_collider() == player and bulletspawn.is_stopped():
+		print("started")
 		bulletspawn.start()
 
 

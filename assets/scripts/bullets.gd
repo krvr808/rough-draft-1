@@ -19,7 +19,9 @@ func _on_body_entered(body: Node2D):
 		player.health;
 		
 		if player.health == 0:
-			get_tree().reload_current_scene();
+			#get_tree().reload_current_scene();
+			player.global_position = Vector2(69,32)
+			player.health = 3
 		
 	queue_free()
 	
