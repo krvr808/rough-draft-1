@@ -2,7 +2,7 @@ class_name Bullet extends Area2D
 
 
 
-var projectilespeed : float = 180
+var projectilespeed : float = 160
 
 
 func _physics_process(delta):

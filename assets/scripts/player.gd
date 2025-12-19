@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 #--------VARIABLES-------------------------------------------------------------------------------------------------------------
 var normalspeed = 300.0
-var JUMP_VELOCITY = -100.0
+var JUMP_VELOCITY = -75.0
 var wall_slide_speed = 50
 var wall_slide_gravity = 50
 
